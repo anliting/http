@@ -1,23 +1,22 @@
 import mime from'mime/lite.js'
 import core from'@anliting/core'
-import url from'url'
-async function dirMap(req,res,option={}){
-    let p=(new url.URL(req.url,'http://a')).pathname.substring(1),s
+async function dirMap(stream,path,p,option={}){
+    let s
     try{
-        s=await core.createReadStream(`file/${p}`)
+        s=await core.createReadStream(`${path}/${p}`)
     }catch(e){
         if(e==core.createReadStream.badPath)
             return
         throw e
     }
-    let o={}
+    let o={':status':200}
     if(option.mime){
         let t=mime.getType(p)
         if(t)
             o['content-type']=t
     }
-    res.writeHead(200,o)
-    s.pipe(res)
+    stream.respond(o)
+    s.pipe(stream)
     return 1
 }
 export{dirMap}

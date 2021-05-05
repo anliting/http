@@ -21,7 +21,8 @@ async function link(input,file){
 ;(async()=>{
     fs.promises.writeFile('package.json',JSON.stringify({
         dependencies:{
-            mime:''
+            mime:'',
+            '@anliting/core':'anliting/core'
         },
         main:'main.mjs',
         name:'@anliting/http',

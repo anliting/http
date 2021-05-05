@@ -1,1 +1,1 @@
-{"dependencies":{"mime":""},"main":"main.mjs","name":"@anliting/http","version":"0.0.0"}
+{"dependencies":{"mime":"","@anliting/core":"anliting/core"},"main":"main.mjs","name":"@anliting/http","version":"0.0.0"}
